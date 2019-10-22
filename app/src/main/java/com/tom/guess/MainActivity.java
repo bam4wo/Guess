@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     String TAG = MainActivity.class.getSimpleName();
     private TextView hint;
     private ImageView result;
+    int c = 5;
+    private TextView time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         number = findViewById(R.id.num);
         hint = findViewById(R.id.hint);
         result = findViewById(R.id.result);
+        time = findViewById(R.id.time);
 
         Log.d(TAG,"SECRET:"+secret);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void guess(View view){
+        c = c-1;
         int guessnum = Integer.parseInt(number.getText().toString());
         result.setVisibility(View.VISIBLE);
         if (guessnum > secret){
@@ -58,7 +62,13 @@ public class MainActivity extends AppCompatActivity {
             hint.setText("bingo, the secret number is:" + secret);
             result.setImageResource(R.drawable.flower);
         }
+        if (c > 5 || c < 0){
+            time.setText("game over");
+        }else {
+            time.setText("remaining times:" + c);
+        }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
