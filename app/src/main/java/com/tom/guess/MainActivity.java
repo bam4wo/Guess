@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             hint.setText("bingo, the secret number is:" + secret);
             result.setImageResource(R.drawable.flower);
         }
-        if (c > 5 || c < 0){
+        if (c > 5 || c <= 0){
             time.setText("game over");
         }else {
             time.setText("remaining times:" + c);
