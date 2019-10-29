@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             //listener = null;
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Hint")
-                    .setMessage("smaller" )
+                    .setMessage("bigger" )
                     .setPositiveButton("ok",null)
                     .show();
         }else {
