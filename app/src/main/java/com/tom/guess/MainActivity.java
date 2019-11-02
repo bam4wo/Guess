@@ -66,42 +66,41 @@ public class MainActivity extends AppCompatActivity {
         result.setVisibility(View.VISIBLE);
         counter++;
         time.setText(counter+"");
-        DialogInterface.OnCancelListener listener = new DialogInterface.OnCancelListener() {
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
-            public void onCancel(DialogInterface dialog) {
+            public void onClick(DialogInterface dialog, int which) {
                 reset();
             }
         };
         String message = "good";
         if (guessnum > secret){
-            hint.setText("smaller");
+            //hint.setText("smaller");
             result.setImageResource(R.drawable.down);
             message = "smaller";
-            //listener = null;
-            new AlertDialog.Builder(MainActivity.this)
+            listener = null;
+            /*new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Hint")
                     .setMessage("smaller" )
                     .setPositiveButton("ok",null)
-                    .show();
+                    .show();*/
         }else if (guessnum < secret){
-            hint.setText("bigger");
+            //hint.setText("bigger");
             result.setImageResource(R.drawable.up);
             message = "bigger";
-            //listener = null;
-            new AlertDialog.Builder(MainActivity.this)
+            listener = null;
+            /*new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Hint")
                     .setMessage("bigger" )
                     .setPositiveButton("ok",null)
-                    .show();
-        }else {
-            hint.setText("bingo, the secret number is:" + secret);
-            result.setImageResource(R.drawable.flower);
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("Hint")
-                    .setMessage("bingo" )
-                    .setPositiveButton("ok",null)
-                    .show();
+                    .show();*/
         }
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Hint")
+                .setMessage("good")
+                .setPositiveButton("ok", listener)
+                .show();
+
+
 
 
         /*
